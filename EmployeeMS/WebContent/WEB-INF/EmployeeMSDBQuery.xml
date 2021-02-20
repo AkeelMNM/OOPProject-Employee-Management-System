@@ -1,0 +1,627 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- SQL Queries -->
+<Querys>
+
+		<!-- ********* Attendance & AttendanceStatus SQL Queries ************ -->
+
+		<!-- Insert Attendance  -->
+		<query id="insert_attendance">
+		<![CDATA[
+			insert into attendance(AttId,Employee,department,T_Date,Start_Time,End_Time,A_Status)
+			values(?, ?, ?, ?, ?, ?, ?)
+		]]>
+		</query>
+		
+		<!-- Get AttendanceID by Employee ID  -->
+		<query id="get_attendanceId">
+		<![CDATA[
+			select AttId from attendance where Employee = ?
+		]]>
+		</query>
+		
+		<!-- Select Attendance by Attendance ID  -->
+		<query id="get_attendance">
+		<![CDATA[
+			select * from attendance where AttId = ?
+		]]>
+		</query>
+		
+		<!-- Select DepartmentID by Attendance ID  -->
+		<query id="get_departmentId_from_attendance">
+		<![CDATA[
+			select department from attendance where AttId = ?
+		]]>
+		</query>
+		
+		<!-- Select All Attendance  -->
+		<query id="get_all_attendance">
+		<![CDATA[
+			select * from attendance
+		]]>
+		</query>
+		
+		<!-- Select All Attendance in A Department  -->
+		<query id="get_all_attendance_in_department">
+		<![CDATA[
+			select * from attendance where department = ?
+		]]>
+		</query>
+		
+		<!-- Update Attendance Start_Time by ID -->
+		<query id="update_attendance_start_time">
+		<![CDATA[
+			update attendance 
+			set T_Date = ? , Start_Time = ?,A_Status = ?
+			where AttId = ?
+		]]>
+		</query>
+		
+		<!-- Update Attendance End_Time by ID -->
+		<query id="update_attendance_end_time">
+		<![CDATA[
+			update attendance 
+			set End_Time = ?
+			where AttId = ?
+		]]>
+		</query>
+		
+		<!-- Delete Attendance -->
+		<query id="remove_attendance">
+		<![CDATA[
+			delete from attendance where AttId = ?
+		]]>
+		</query>
+		
+		<!-- Get Attendance IDs  -->
+		<query id="get_attendanceids">
+		<![CDATA[
+			select AttId from attendance
+		]]>
+		</query>
+			
+		<!-- Get Employees that don't Have Attendance  -->
+		<query id="get_employee_dont_have_attendance">
+		<![CDATA[
+			SELECT e.EmpId,e.department,e.fullname,e.Gender,e.Date_of_joint
+			FROM employee e
+			LEFT JOIN attendance a ON a.Employee = e.fullname
+			WHERE a.Employee IS NULL
+		]]>
+		</query>
+		
+		<!-- Set Start_Time,End_Time to null in Attendance  -->
+		<query id="set_attributes_to_null">
+		<![CDATA[
+			update attendance set T_Date = null , Start_Time = null,End_Time = null , A_Status = 'Absent';
+		]]>
+		</query>
+		
+		
+		
+		<!-- Insert AttendanceStatus  -->
+		<query id="insert_attendanceStatus">
+		<![CDATA[
+			insert into attendanceStatus(AttStId,AttId,Employee,Department,NoWorkingDays,NoLeaveDays)
+			values(?, ?, ?, ?, ?,?)
+		]]>
+		</query>
+		
+		<!-- Get AttendanceStatusID by AttendanceID  -->
+		<query id="get_attendanceStatusId">
+		<![CDATA[
+			select AttStId from attendanceStatus where AttId = ?
+		]]>
+		</query>
+		
+		<!-- Select AttendanceStatus by AttendanceStatus ID  -->
+		<query id="get_attendanceStatus">
+		<![CDATA[
+			select * from attendanceStatus where AttStId = ?
+		]]>
+		</query>
+		
+		<!-- Select All AttendanceStatus in A Department  -->
+		<query id="get_all_attendanceStatus_in_department">
+		<![CDATA[
+			select * from attendancestatus where department = ?
+		]]>
+		</query>
+		
+		<!-- Select All AttendanceStatus  -->
+		<query id="get_all_attendanceStatus">
+		<![CDATA[
+			select * from attendanceStatus
+		]]>
+		</query>
+
+		<!-- Get AttendanceStatus IDs  -->
+		<query id="get_attendanceStatusids">
+		<![CDATA[
+			select AttStId from attendancestatus
+		]]>
+		</query>
+		
+		
+		<!-- Delete Attendance -->
+		<query id="remove_attendanceStatus">
+		<![CDATA[
+			delete from attendanceStatus where AttStId = ?
+		]]>
+		</query>
+		
+		<!-- Update Attendance No of working days by ID -->
+		<query id="update_attendance_no_of_working_days">
+		<![CDATA[
+			update attendancestatus 
+			set NoWorkingDays = ?
+			where AttStId = ?
+		]]>
+		</query>
+		
+		<!-- Update Attendance no of leave days by ID -->
+		<query id="update_attendance_no_of_leave_days">
+		<![CDATA[
+			update attendancestatus 
+			set NoLeaveDays = ?
+			where AttStId = ?
+		]]>
+		</query>
+		
+		<!-- Get AttendanceStatusID's of absent employees  -->
+		<query id="get_attendance_whos_absent">
+		<![CDATA[
+			select AttStId , NoLeaveDays
+			from attendancestatus
+			where AttId =any (select AttId
+								from attendance 
+								where A_Status = 'Absent')
+		]]>
+		</query>
+		
+		
+		
+		<!-- Set Working Days,Leave Days to null in AttendanceStatus  -->
+		<query id="set_attSt_attributes_to_null">
+		<![CDATA[
+			update attendancestatus set NoWorkingDays = 0 , NoLeaveDays = 0;
+		]]>
+		</query>
+		
+		
+		<!-- Select All AttendanceStatus in A Department  -->
+		<query id="get_all_attendanceStatus_in_department">
+		<![CDATA[
+			select *
+   			from attendancestatus
+    		where department = ?
+		]]>
+		</query>
+		
+		<!-- Get Login details -->
+		<query id="get_login">
+		<![CDATA[
+			select Username,pwd,EmpLoyee,Role from login where Username = ? and pwd = ?
+		]]>
+		</query>
+		
+		<!-- Get Managers Department ID -->
+		<query id="get_Managers_Department_ID">
+		<![CDATA[
+			select department from employee where fullname = ?
+		]]>
+		</query>
+		
+		
+		<!-- Get Employee Name -->
+		<query id="get_employee_name">
+		<![CDATA[
+			select fullname from employee where EmpId = ?
+		]]>
+		</query>
+
+		<!-- *****************************************************************************************   -->
+		
+		
+		
+		<!-- ************* Employee & Department & Login & Manager SQL Queries ************ -->
+		
+		<!-- ******************** Query of Manager ************************************** -->
+	
+		<!-- Select a particular Manager by id Query-->
+		<query id="Manager_by_id">
+	        <![CDATA[
+	          	select department 
+	          	from Manager 
+	          	where Manager.ManagerId = ?
+	        ]]>
+		</query>
+		
+		<!-- Select a particular Manager by id Query-->
+		<query id="Manager_by_id_All_Details">
+	        <![CDATA[
+	          	select * 
+				from Manager
+				where ManagerId = ? ;
+	        ]]>
+		</query>	
+		
+		<!-- each department employee details-->
+		<query id="Manager_Dep_Employee">
+	        <![CDATA[
+	          	select * 
+	          	from Employee 
+	          	where Employee.department = ?
+	        ]]>
+		</query>
+		
+		<!-- Insert Manager Details Query -->
+		<query id="insert_Manager_Details">
+	        <![CDATA[
+	          	Insert into Manager(ManagerId,Employee,department,Starting_Date,LoginId)
+				Values(?,?,?,?,?)
+	        ]]>
+		</query>
+		
+		<!-- Select all Manager -->
+		<query id="all_Managers">
+	         <![CDATA[        
+	            select * from Manager
+	        ]]>
+		</query>
+	
+		<!-- Delete a particular Manager by id Query -->
+		<query id="remove_Manager">
+	         <![CDATA[        
+	            delete from Manager where Manager.ManagerId = ?
+	        ]]>
+		</query>
+		
+		<!-- Get Manager IDs Query -->
+		<query id="Manager_ids">
+	         <![CDATA[        
+	            select m.ManagerId 
+	            from Manager as m
+	        ]]>
+		</query>
+		
+		<!-- Update a particular manager by id Query -->
+		<query id="update_manager_Details">
+	         <![CDATA[        
+	            update Manager
+	            set manager.Employee = ? , manager.department = ? , manager.Starting_Date = ? 
+	            where manager.ManagerId = ?
+	        ]]>
+		</query>
+		
+		<!-- Get Manager ID by Employee id Query -->
+		<query id="Get_managerID_by_EmpID">
+	         <![CDATA[        
+	            Select manager.ManagerId
+				from manager, employee 
+				where manager.Employee = employee.fullname AND employee.EmpId = ? 
+	        ]]>
+		</query>	
+		
+	
+					<!-- ************************ Query of Department ******************************* -->
+							
+							
+		<!-- Insert Department Details Query -->
+		<query id="insert_Dep_Details">
+	        <![CDATA[
+	          	Insert into Department(depId ,Name,Location) 
+				Values(?,?,?)
+	        ]]>
+		</query>
+		
+		<!-- Select a particular Department by id Query -->
+		<query id="Dep_by_id">
+	         <![CDATA[        
+	            select * from Department where Department.depId = ?
+	        ]]>
+		</query>
+	
+		<!-- Select a particular Department by Name Query -->
+		<query id="Dep_by_name">
+	         <![CDATA[        
+	            	select * 
+				    from department d ,manager m
+				    where d.Name = m.department and m.ManagerId = ?
+	        ]]>
+		</query>
+		
+		<!-- Select all Department -->
+		<query id="all_Dep">
+	         <![CDATA[        
+	            select * from Department
+	        ]]>
+		</query>
+		
+		<!-- Delete a particular Department by id Query -->
+		<query id="remove_Dep">
+	         <![CDATA[        
+	            delete from Department where Department.depId = ?
+	        ]]>
+		</query>
+		
+		<!-- Update a particular Department by id Query -->
+		<query id="update_Dep_Details">
+	         <![CDATA[        
+	            update Department as d 
+	            set d.Name = ?, d.Location = ?
+	            where d.depId = ?
+	        ]]>
+		</query>
+		
+		<!-- Get Department IDs Query -->
+		<query id="Dep_ids">
+	         <![CDATA[        
+	            select d.depId 
+	            from Department as d
+	        ]]>
+		</query>
+	
+	
+					<!-- ******************** Query of Employee ************************************** -->
+	
+	
+		<!-- Insert Employee Details Query -->
+		<query id="insert_emp_Details">
+	        <![CDATA[
+	          	Insert into Employee(EmpID,fullname,JobTitle,address,Gender,DOB,MaritalStatus,NIC,phone_no,Date_of_joint,salary,department) 
+				Values(?,?,?,?,?,?,?,?,?,?,?,?)
+	        ]]>
+		</query>
+		
+		<!-- Select a particular employee by id Query -->
+		<query id="employee_by_id">
+	         <![CDATA[        
+	            select * from Employee where Employee.EmpID = ?
+	        ]]>
+		</query>
+	
+		<!-- Select all employees -->
+		<query id="all_employees">
+	         <![CDATA[        
+	            select * from Employee
+	        ]]>
+		</query>
+	
+		<!-- Delete a particular employee by id Query -->
+		<query id="remove_employee">
+	         <![CDATA[        
+	            delete from Employee where Employee.EmpID = ?
+	        ]]>
+		</query>
+		
+		<!-- Update a particular employee by id Query -->
+		<query id="update_emp_Details">
+	         <![CDATA[        
+	            update Employee as e 
+	            set e.fullname  = ?, e.JobTitle = ?, e.address = ?, e.Gender = ?, e.DOB = ? , e.MaritalStatus = ? , e.NIC = ?,
+	            		e.phone_no = ?, e.Date_of_joint = ?, e.salary = ?, e.department = ?
+	            where e.EmpID = ?
+	        ]]>
+		</query>
+		
+		<!-- Get employee IDs Query -->
+		<query id="employee_ids">
+	         <![CDATA[        
+	            select e.EmpID 
+	            from Employee as e
+	        ]]>
+		</query>
+		
+	
+		<!-- ******************** Query of Login ************************************** -->
+	
+	
+		<!-- Insert Login Details Query -->
+		<query id="insert_login_Details">
+	        <![CDATA[
+	          	Insert into Login(LoginId,EmpLoyee,Username,pwd,Role) 
+				Values(?,?,?,?,?)
+	        ]]>
+		</query>
+		
+		<!-- Get Login IDs Query -->
+		<query id="Login_ids">
+	         <![CDATA[        
+	            select l.LoginId 
+	            from Login as l
+	        ]]>
+		</query>
+	
+		<!-- Get Login ID for Manager table Query -->
+		<query id="get_loginID_for_manager_table">
+	         <![CDATA[     
+	         	select l.LoginId 
+				from Login as l,Employee as e
+				where l.EmpLoyee = e.EmpId AND e.fullname = ?
+	        ]]>
+		</query>
+  
+  		<!-- *****************************************************************************************   -->
+  
+		<!-- *************** Tasks SQL Queries ******************  -->
+			
+			
+		<query id="insert_task">
+	        <![CDATA[
+	          	insert into Tasks(TaskId, Employee , department, TaskName, AssignDate) 
+	          	values (?, ?, ?, ?, ?);
+	        ]]>
+		</query>
+		
+		<query id="task_by_id">
+	        <![CDATA[
+	          	select * from Tasks where Tasks.TaskId = ? ;
+	        ]]>
+		</query>	
+		
+		<query id=	"all_task">
+	        <![CDATA[
+	          	select * from Tasks where department= ? 
+	          	
+	        ]]>
+		</query>
+		
+		<query id=	"remove_task">
+	        <![CDATA[
+	          	delete from Tasks where tasks.TaskId = ? ;
+	        ]]>
+		</query>
+		
+		<query id=	"update_task">
+	        <![CDATA[
+	          	update Tasks as t 
+	            set t.Employee = ?, t.department = ?, t.TaskName = ?, t.AssignDate = ? 
+	            where t.TaskId = ? ;
+	        ]]>
+		</query>
+		
+		<query id=	"task_ids">
+	        <![CDATA[
+	          	select t.TaskId
+	          	from Tasks as t ;
+	        ]]>
+		</query>
+		
+		<query id=	"get_task_by_EmployeeID">
+	        <![CDATA[
+	          	select tasks.TaskId, tasks.Employee, tasks.department, tasks.TaskName , tasks.AssignDate
+				from Tasks , employee
+				Where tasks.Employee = employee.fullname AND employee.EmpId = ? ;	
+	        ]]>
+		</query>
+	
+		<query id=	"get_dep_name_by_employee_id">
+	        <![CDATA[
+	          	select d.Name
+				from department d , employee e
+				where d.Name = e.department AND e.EmpId= ?;
+	        ]]>
+		</query>
+		
+		<query id=	"get_employees_name">
+	        <![CDATA[
+	          	select employee.fullname 
+				from employee where department = ? ;
+	        ]]>
+		</query>
+	
+  
+  		<!-- *****************************************************************************************   -->
+  
+		<!-- **************** Leave SQL Queries ********************* -->
+		
+		<!-- insert  Leave Query -->
+		<query id="insert_leave">
+	        <![CDATA[
+	          Insert into E_Leave(LeaveId,Employee,department,Starting_Date,End_Date,L_Status,description)
+	          	values (?, ?, ?, ?, ?, ?, ?)
+	        ]]>
+		</query>
+	
+		
+		
+		<!-- Select a particular Leave by id Query -->
+		<query id="leave_by_id">
+	         <![CDATA[        
+	            select * from E_Leave where LeaveId = ?
+	        ]]>
+		</query>
+	
+		<!-- Select a particular Leave by employee name Query -->
+		<query id="leave_by_employeename">
+	         <![CDATA[        
+	            select * from E_Leave where Employee = ?
+	        ]]>
+		</query>
+		
+		<!-- Select a particular Leave by department Query -->
+		<query id="leave_department_name">
+	         <![CDATA[        
+	            select department from Employee where EmpId = ?
+	        ]]>
+		</query>
+		
+		
+		
+			<!-- get all departmrnt leaves-->
+		<query id="get_all_department_leave">
+	         <![CDATA[        
+	            select * from E_Leave where department = ?
+	        ]]>
+		</query>
+		
+		
+		
+	
+		
+	
+		<!-- Select all Leaves -->
+		<query id="all_leaves">
+	         <![CDATA[        
+	            select * from E_Leave
+	        ]]>
+		</query>
+	
+		<!-- Delete a particular Leave by id Query -->
+		<query id="remove_Leave">
+	         <![CDATA[        
+	            delete from E_Leave where E_Leave.LeaveID = ?
+	        ]]>
+		</query>
+		
+		<!-- Update a particular Leave by id Query -->
+		<query id="update_leave">
+	         <![CDATA[        
+	            update E_Leave as e 
+	            set e.LeaveId =? , e.Employee = ?,e.department= ?, e.Starting_Date = ?, e.End_Date = ?, e.L_Status = ?, e.description = ? 
+	            where e.LeaveID = ?
+	        ]]>
+		</query>
+		
+		<!-- Get all Employee leave IDs Query -->
+		<query id="get_all_leave_ids">
+	         <![CDATA[        
+	            select LeaveId from E_Leave 
+	        ]]>
+		</query>
+		
+	
+		
+		<!--  Get login details -->
+	
+		<query id="get_login">
+		<![CDATA[
+		 select Employee,Role from login where Username=? and pwd=?
+		 ]]>
+		</query>
+		
+			<!--  query to Get Name -->
+		
+			<query id="GET_NAME">
+	         <![CDATA[   
+	         
+	         	select fullname  from employee  where EmpId= ?     
+	             
+	        ]]>
+		</query>
+		
+			<!--  query to update leave permission -->
+		<query id="update_leavepermission">
+	         <![CDATA[        
+	            update E_Leave as e 
+	            set e.L_Status = ?
+	            where e.LeaveID = ?
+	        ]]>
+		</query>
+  
+  		<!-- *****************************************************************************************   -->
+		
+		
+		
+</Querys>

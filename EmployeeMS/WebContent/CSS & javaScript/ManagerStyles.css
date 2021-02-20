@@ -1,0 +1,316 @@
+/*CSS Styles for Admin page and AdminProductList*/
+/*background images,hr tag,input tag in form ,label and form border*/
+body
+{
+	background-color:#2c2c2c;
+	background-size: cover;
+}
+form
+{
+	border-style: double;
+}
+label
+{
+	font-size:30px;
+}
+#hr1
+{
+	height:5px;
+	background-color:#d43335;
+}
+.inputC
+{
+	width:40%;
+}
+h1
+{
+	font-family:'Gabriela';
+	font-size:50px;
+	color:white;
+}
+/*--------------------------------------------------*/
+/*Header Logo*/
+#logo
+{
+		display:block;
+		width:100px;
+		height:100px;
+}
+#logoA
+{
+		display:block;
+		width:50px;
+		height:50px;
+}
+/*--------------------------------------------------*/
+
+/* Table */
+td.tdc
+{
+	width:2%;
+}
+#tdname
+{
+	width:70%;
+	
+}
+#supportB
+{
+	width:40%;
+	background-color:#035afc;
+	border:none;
+	cursor:pointer;
+	margin-left:120px;
+}
+#helpB
+{
+	width:30%;
+	background-color:#c6fc03;
+	border:none;
+	cursor:pointer;
+}
+div.tda
+{
+	
+	vertical-align: middle;
+}
+/*--------------------------------------------------*/
+
+/*button*/
+
+.btn-group
+{
+	
+	padding-right:10px;
+}
+
+.button {
+
+  background-color:#E85A4F;
+  border: none;
+  color: white;
+  padding: 15px ;
+  text-align: center;
+  text-decoration: none;
+  font-size: 14px;
+  transition: 0.3s;
+  width:19%;
+  cursor:pointer;
+  margin-left:10px;
+  margin-top:5px;
+  
+}
+/* Change background color of buttons on hover */
+.button:hover {
+  background-color: #ddd;
+}
+
+/* Create an active/current "tab button" class */
+.button button.active {
+  background-color: #ccc;
+}
+
+
+.buttoninsidemenu {
+  background-color:#0299a6;
+  border: none;
+  color: white;
+  padding: 15px ;
+  text-align: center;
+  text-decoration: none;
+  font-size: 14px;
+  margin-left:3px;
+  width:100%;
+  cursor:pointer;
+  margin-top:20px;
+}
+
+
+.buttonrad 
+{
+	border-radius: 8px;
+}
+
+}
+.button:hover 
+{
+  background-color:black;
+}
+
+#submitB
+{
+	width:25%;
+	background-color:black;
+	color:white;
+	border:none;
+	cursor:pointer;
+}
+#restB
+{
+	width:15%;
+	background-color:red;
+	color:white;
+	border:none;
+	cursor:pointer;
+}
+
+/*--------------------------------------------------*/
+
+div.left
+{
+	background-color:#2c2c2c;
+	width:100%;
+	height:60px;
+	float:left;
+	border: 1px solid #ccc;
+	
+}
+div.left2
+{
+	background-color:white;
+	height:60%;
+	width:79%;
+	float:left;
+	border: 1px solid #ccc;
+	overflow:scroll;
+}
+
+div.left3
+{
+	background-color:#2c2c2c;
+	height:10%;
+	width:100%;
+	padding:5px;
+	float:left;
+	color:white;
+}
+div.left4
+{
+	background-color:#2c2c2c;
+	width:20%;
+	padding:5px;
+	float:left;
+	height:400px;
+	border: 1px solid #ccc;
+	
+	
+}
+div.left5
+{
+	background-color:white;
+	width:100%;
+	padding:5px;
+	float:left;
+	height:60%;
+	border: 1px solid #ccc;
+	
+	
+}
+
+/*--------------------------------------------------*/
+
+/*All  Big Div tags*/
+div.bigDiv
+{
+	background-color:#2c2c2c;
+	width:100%;
+	padding:5px;
+	float:left;
+	
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  
+}
+
+
+
+div.logo
+{
+	width:7%;
+	float:left;
+}
+div.name
+{
+	float:left;
+	width:70%;
+}
+div.manage
+{
+	float:left;
+	width:20%;
+	padding-top:30px;
+	display: flex;
+}
+div.adminlogo
+{
+	float:left;
+	margin-left:200px;
+}
+div.buttonSec
+{
+	width:30%;
+	float:left;
+}
+
+/*--------------------------------------------------*/
+/*Edit button link*/
+.editPicResize
+{
+	width:25px;
+	height:25px;
+}
+
+.Tblabel
+{
+	font-size:20px;
+	text-decoration:underline;
+}
+
+/*--------------------------------------------------*/
+/*Manage Buttons*/
+
+/* Dropdown Button */
+.dropbtn {
+  background-color: transparent;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+}
+
+/* Dropdown button on hover & focus */
+.dropbtn:hover, .dropbtn:focus {
+  background-color: #2980B9;
+}
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {background-color: #ddd}
+
+/* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
+.show {display:block;}
+
+/*--------------------------------------------------*/

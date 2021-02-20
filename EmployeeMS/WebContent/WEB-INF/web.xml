@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" version="3.0">
+  <display-name>EmployeeMS</display-name>
+  
+  <!-- Attendance Servlet mapping & AttendanceStatus Servlet mapping  -->
+  
+  <servlet>
+  		<servlet-name>AddAttendanceServlet</servlet-name>
+  		<servlet-class>ems.attendance.servlet.AddAttendanceServlet</servlet-class>
+  </servlet>
+  
+    <servlet>
+  		<servlet-name>ViewAttendanceServlet</servlet-name>
+  		<servlet-class>ems.attendance.servlet.ViewAttendanceServlet</servlet-class>
+  </servlet>
+  
+    <servlet>
+  		<servlet-name>UpdateAttendanceServlet</servlet-name>
+  		<servlet-class>ems.attendance.servlet.UpdateAttendanceServlet</servlet-class>
+  </servlet>
+  
+    <servlet>
+  		<servlet-name>DeleteAttendanceServlet</servlet-name>
+  		<servlet-class>ems.attendance.servlet.DeleteAttendanceServlet</servlet-class>
+  </servlet>
+  
+  <servlet>
+  		<servlet-name>GetAttendanceServlet</servlet-name>
+  		<servlet-class>ems.attendance.servlet.GetAttendanceServlet</servlet-class>
+  </servlet>
+  
+   <servlet>
+  		<servlet-name>UpdateAttendanceStatusServlet</servlet-name>
+  		<servlet-class>ems.attendanceStatus.servlet.UpdateAttendanceStatusServlet</servlet-class>
+  </servlet>
+  
+  <servlet>
+  		<servlet-name>DeleteAttendanceStatusServlet</servlet-name>
+  		<servlet-class>ems.attendanceStatus.servlet.DeleteAttendanceStatusServlet</servlet-class>
+  </servlet>
+  
+  <servlet>
+  		<servlet-name>ViewAttendanceStatusServlet</servlet-name>
+  		<servlet-class>ems.attendanceStatus.servlet.ViewAttendanceStatusServlet</servlet-class>
+  </servlet>
+  
+   <!-- *****************************************************************************************   -->
+  
+  <!-- Employee Servlet mapping & Department Servlet mapping  -->
+  
+   <servlet>
+  	<servlet-name>AddEmployeeServlet</servlet-name>
+  	<servlet-class>ems.Employee.servlet.AddEmployeeServlet</servlet-class>
+  </servlet>
+  
+  <servlet>
+  	<servlet-name>HRViewEmployee</servlet-name>
+  	<servlet-class>ems.Employee.servlet.HRViewEmployeeServlet</servlet-class>
+  </servlet>
+  
+  <servlet>
+  	<servlet-name>HRDeleteEmployeeServlet</servlet-name>
+  	<servlet-class>ems.Employee.servlet.HRDeleteEmployeeServlet</servlet-class>
+  </servlet>
+  
+  <servlet>
+  	<servlet-name>HRUpdateEmployeeServlet</servlet-name>
+  	<servlet-class>ems.Employee.servlet.HRUpdateEmployeeServlet</servlet-class>
+  </servlet>
+  
+  <servlet>
+  	<servlet-name>AddDepartmentServlet</servlet-name>
+  	<servlet-class>ems.Departmet.servlet.AddDepartmentsServlet</servlet-class>
+  </servlet>
+  
+  <servlet>
+  	<servlet-name>HRDeleteDepartmentServlet</servlet-name>
+  	<servlet-class>ems.Department.servlet.HRDeleteDepartmentServlet</servlet-class>
+  </servlet>
+  
+   <servlet>
+  	<servlet-name>HRUpdateDepartmentServlet</servlet-name>
+  	<servlet-class>ems.Department.servlet.HRUpdateDepartmentServlet</servlet-class>
+  </servlet>
+  
+   <servlet>
+  	<servlet-name>HRUpdateManagerServlet</servlet-name>
+  	<servlet-class>ems.Department.servlet.HRUpdateManagerServlet</servlet-class>
+  </servlet>
+  
+  <!-- *****************************************************************************************   -->
+  
+  <!-- Leave Servlet mapping   -->
+  
+  <servlet>
+    <servlet-name>AddLeaveServlet</servlet-name>
+    <servlet-class>ems.leave.servlet.AddLeaveServlet</servlet-class>
+  </servlet>
+  
+  <servlet>
+    <servlet-name>UpdateLeaveServlet</servlet-name>
+    <servlet-class>ems.Leave.servlet.UpdateLeaveServlet</servlet-class>
+  </servlet>
+  
+  <servlet>
+    <servlet-name>DeleteLeaveServlet</servlet-name>
+    <servlet-class>ems.Leave.servlet.DeleteLeaveServlet</servlet-class>
+  </servlet>
+  
+  <servlet>
+    <servlet-name>ViewLeaveServlet</servlet-name>
+    <servlet-class>ems.Leave.servlet.ViewLeaveServlet</servlet-class>
+  </servlet>
+  
+ 
+     <servlet>
+    <servlet-name>GetLeaveServlet</servlet-name>
+    <servlet-class>ems.leave.servlet.GetLeaveServlet</servlet-class>
+  </servlet>
+  
+  
+    <servlet>
+    <servlet-name>ApprovedLeaveServlet</servlet-name>
+    <servlet-class>ems.leave.servlet.ApprovedLeaveServlet</servlet-class>
+  </servlet>
+  		
+  
+  <!-- *****************************************************************************************   -->
+  
+  <!-- Tasks Servlet mapping  -->
+  
+  <servlet>
+  	<servlet-name>addTaskServlet</servlet-name>
+  	<servlet-class>ems.Tasks.servlet.addTaskServlet</servlet-class>
+  </servlet>
+  
+   <servlet>
+  	<servlet-name>viewTaskServlet</servlet-name>
+  	<servlet-class>ems.Tasks.servlet.viewTaskServlet</servlet-class>
+  </servlet>
+  
+   <servlet>
+  	<servlet-name>updateTaskServlet</servlet-name>
+  	<servlet-class>ems.Tasks.servlet.updateTaskServlet</servlet-class>
+  </servlet>
+  
+   <servlet>
+  	<servlet-name>deleteTaskServlet</servlet-name>
+  	<servlet-class>ems.Tasks.servlet.deleteTaskServlet</servlet-class>
+  </servlet>
+  
+  <!-- *****************************************************************************************   -->
+  
+  
+  <!-- Login Servlet mapping  -->
+  
+   <servlet>
+  		<servlet-name>LoginServlet</servlet-name>
+  		<servlet-class>ems.login.serviceAndservlet.LoginServlet</servlet-class>
+  </servlet>
+  
+  <servlet>
+  		<servlet-name>LogoutServlet</servlet-name>
+  		<servlet-class>ems.login.serviceAndservlet.LogoutServlet</servlet-class>
+  </servlet>
+  
+  <!-- *****************************************************************************************   -->
+  
+  
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+    <welcome-file>index.htm</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>default.html</welcome-file>
+    <welcome-file>default.htm</welcome-file>
+    <welcome-file>default.jsp</welcome-file>
+  </welcome-file-list>
+  
+</web-app>
+
