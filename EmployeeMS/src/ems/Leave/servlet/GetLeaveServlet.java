@@ -61,10 +61,19 @@ public class GetLeaveServlet extends HttpServlet {
 		
 		LeaveService leaveservice = new LeaveServiceimpt();
 		leavelist =leaveservice.getLeaveByID(LeaveID);
+		
+		if(request.getParameter("check").equals("HR")) {
+			
+			request.setAttribute("Leave", leavelist);
+			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/HR/HR Update Leave.jsp");
+			dispatcher.forward(request, response);
+		}else {
+			
+			request.setAttribute("Leave", leavelist);
+			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/Employee/Employee Update Leave.jsp");
+			dispatcher.forward(request, response);
+		}
 
-		request.setAttribute("Leave", leavelist);
-		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/Employee/Employee Update Leave.jsp");
-		dispatcher.forward(request, response);
 	}
 
 }

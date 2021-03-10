@@ -155,6 +155,7 @@ form{border: none;}
 				<td>
 					<form method="POST" action="${pageContext.request.contextPath}/GetLeaveServlet">
 						<input type="hidden" name="LeaveID" value="<%=leave.getLeaveId()%>" /> 
+						<input type="hidden" name="check" value="HR" />
 							<input type="submit" value="Select Leave" class="select-button" />
 					</form>
 				</td>

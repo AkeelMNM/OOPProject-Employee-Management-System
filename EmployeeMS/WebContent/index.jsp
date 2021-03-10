@@ -182,8 +182,9 @@ input[type="submit"]{ padding: 10px 10px; line-height:15px; }
 <div class="footer">
 		Copyright 2020 @ EMPLOYEE MANAGMENT SYSTEM.
 		All Rights Reserved<br>
-		Contact Hotline : 0812384545 <br>
-		Email : EMSSystem@info.lk
+		Email : EMSSystem@info.lk<br>
+		Designed by SLIIT 2nd year 1st semester software engineering students
+		
 </div>
 </body>
 </html>
